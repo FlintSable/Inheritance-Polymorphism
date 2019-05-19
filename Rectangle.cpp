@@ -4,7 +4,7 @@
 #include "Rectangle.h"
 
 
-Rectangle::Rectangle(string n, double l, double w) : Shape(n){
+Rectangle::Rectangle(string n, int num, double l, double w) : Shape(n, num){
     length = l;
     width = w;
 }
@@ -26,19 +26,20 @@ double Rectangle::getLength() const{
 double Rectangle::getWidth() const{
     return width;
 }
+
 double Rectangle::getArea() const{
     return length * width;
 }
 
 double requestRectLength(void){
     double x = 0;
-    cout << "length: ";
+    cout << "   length: ";
     cin >> x;
     return x;
 }
 double requestRectWidth(void){
     double x = 0;
-    cout << "width: ";
+    cout << "   width: ";
     cin >> x;
     return x;
 }

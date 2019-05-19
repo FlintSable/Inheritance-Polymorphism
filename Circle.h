@@ -7,7 +7,7 @@ class Circle : public Shape{
         double radius;
 
     public:
-        Circle(string n, double r);
+        Circle(string n, int num, double r);
         ~Circle();
         void setRadius(double r);
         double getRadius() const;

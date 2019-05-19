@@ -5,7 +5,7 @@ class Rectangle : public Shape{
     private:
         double length, width;
     public:
-        Rectangle(string n, double l, double w);
+        Rectangle(string n, int num, double l, double w);
         ~Rectangle();
         void setLength(double l);
         void setWidth(double w);

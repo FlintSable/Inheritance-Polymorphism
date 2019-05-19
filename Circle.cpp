@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Circle::Circle(string n, double r) : Shape(n){
+Circle::Circle(string n, int num, double r) : Shape(n, num){
     radius = r;
 }
 

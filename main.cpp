@@ -82,41 +82,55 @@ using namespace std;
 // };
 
 // third child class
-class Triangle : public Shape{
-    private:
-        double base, width;
+// class Triangle : public Shape{
+//     private:
+//         double base, width;
 
-    public:
-        Triangle(string n, double b, double w) : Shape(n){
-            base = b;
-            width = w;
-        }
-        ~Triangle(){}
-        virtual double getArea() const{
-            return .5 * base * width;
-        }
+//     public:
+//         Triangle(string n, double b, double w) : Shape(n){
+//             base = b;
+//             width = w;
+//         }
+//         ~Triangle(){}
+//         virtual double getArea() const{
+//             return .5 * base * width;
+//         }
+//         virtual double getLength(){
+//             return 1;
+//         }
 
-};
+// };
 
 
 int main(){
     int menuReturn = 0;
     int count = 0;
-    Shape *shapes[3];
+    int const arraySize = 3;
+    Shape *shapes[arraySize] = {0};
+    // save for later: dynamic array of pointers
+    // cin >> arraySize;
+    // Shape** shapes = new Shape*[arraySize];
+    
+	
     while(menuReturn != 6){
         menuReturn =  mainMenu();
         // cout << mainMenu() << "\n";
         switch(menuReturn){
-            case 1:{
-                cout << "rectangle \n";
-                double l = requestRectLength();
-                double w = requestRectWidth();
-                // Rectangle r("Rectangle1", l, w);
-                shapes[count] = new Rectangle("RectInArray", l, w);
-                cout << shapes[count] -> getName() << endl;
-                // cout << shapes[count] -> getLength() << " " << shapes[count] -> getWidth() << endl;
-                cout << shapes[count] -> getArea() << endl;
-
+            case 1: {
+                if(count < arraySize){
+                    cout << "rectangle \n";
+                    double l = requestRectLength();
+                    double w = requestRectWidth();
+                    // Rectangle r("Rectangle1", l, w);
+                    shapes[count] = new Rectangle("RectInArray", l, w);
+                    cout << shapes[count] -> getLength() << endl;
+                    cout << shapes[count] -> getLength() << " " << shapes[0] -> getWidth() << endl;
+                    cout << shapes[count] -> getName() << endl;
+                    cout << shapes[count] -> getArea() << endl;
+                    count ++;
+                } else {
+                    cout << "need more space \n";
+                }
             }
                 break;
             case 2:
@@ -128,14 +142,24 @@ int main(){
             case 4:
                 cout << "circle /n";
                 break;
-            case 5:
-                cout << "show shapes that are stored /n";
+            case 5: {
+                cout << "show shapes that are stored : " << count << "\n";
+
+                for(int i = 0; i < arraySize; ++i){
+                    if(shapes[i] == 0){
+                        cout << "Shape: " << i << " undefined" << "\n";
+                    } else{
+                        cout << "Shape: " << i << " area: " << shapes[i] -> getArea() << endl;
+                        // save for later
+                        // cout << "Shape: " << i << " area: " << (*shapes)[i].getArea() << endl;
+                    }
+                }
+            }
                 break;
             case 6:
-                cout << "exit /n";
+                cout << "exit \n";
                 break;
         }
-        count ++;
     }
 
 cout << "\n**********************************\n";
@@ -161,8 +185,8 @@ cout << "\n**********************************\n";
     // cout << r.getLength() << " " << r.getWidth() << endl;
     // cout << r.getArea() << endl;
 
-    Triangle t("Triangle1", 4, 3);
-    cout << t.getArea() << endl;
+    // Triangle t("Triangle1", 4, 3);
+    // cout << t.getArea() << endl;
 
 
     // Shape array of pointers of the base class
@@ -174,11 +198,9 @@ cout << "\n**********************************\n";
     // shapes[2] = new Triangle("TriInArrayr", 8.1, 2.3);
 
 
-    cout << "The stuff: " << shapes[0] -> getArea() << endl;
+    // cout << "The stuff: " << shapes[0] -> getArea() << endl;
 
-    for(int i = 0; i < 3; i++){
-        cout << "Shape: " << i << " area: " << shapes[i] -> getArea() << endl;
-    }
-
+    //save for later
+    // delete[] shapes;
     return 0;
 }

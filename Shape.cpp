@@ -20,6 +20,10 @@ string Shape::getName() const{
     return name;
 }
 
+double Shape::getLength() const{
+    return 0;
+}
+
 // double Shape::getArea() const = 0;
 
 // virtual double Shape::getArea() const = 0;

@@ -4,7 +4,6 @@
 class Rectangle : public Shape{
     private:
         double length, width;
-
     public:
         Rectangle(string n, double l, double w);
         ~Rectangle();

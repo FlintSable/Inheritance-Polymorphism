@@ -3,14 +3,12 @@
 #include "Menu.h"
 
 #define clearScreen() printf("\033[H\033[J")
-// clearScreen();
 
 using namespace std;
     
 int mainMenu(void){
     
     int x; 
-    // clearScreen();
     cout << "\u25F8    Main Menu         \u25F9\n";
     cout << " 1 - create rectangle \n";
     cout << " 2 - create square \n";
@@ -27,7 +25,6 @@ int mainMenu(void){
         cout << "Invalid! Must be > 0" << endl;
         cout << "Enter an integer again: ";
         cin >> x;
-        // clearScreen();
 
     }
     // return the number that was a valid input

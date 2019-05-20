@@ -1,75 +1,26 @@
 #include <iostream>
 #include <string>
+#include <iomanip>
 #include "Menu.h"
 #include "Shape.h"
 #include "Rectangle.h"
 #include "Square.h"
-
-// #include "Circle.h"
-// #include "Triangle.h"
+#include "Triangle.h"
+#include "Circle.h"
 
 #define clearScreen() printf("\033[H\033[J")
 
 using namespace std;
 
-// class Circle : public Shape{
-//     private:
-//         double radius;
-
-//     public:
-//         Circle(string n, double r) : Shape(n){
-//             radius = r;
-//         }
-//         ~Circle(){}
-//         void setRadius(double r){
-//             radius = r;
-//         }
-//         double getRadius() const{
-//             return radius;
-//         }
-
-//         virtual double getArea() const{
-//             return 3.14159 * radius * radius;
-//         }
-// };
-
-
-// third child class
-// class Triangle : public Shape{
-//     private:
-//         double base, width;
-
-//     public:
-//         Triangle(string n, double b, double w) : Shape(n){
-//             base = b;
-//             width = w;
-//         }
-//         ~Triangle(){}
-//         virtual double getArea() const{
-//             return .5 * base * width;
-//         }
-//         virtual double getLength(){
-//             return 1;
-//         }
-
-// };
-
-
 int main(){
     int menuReturn = 0;
     int count = 0;
-    int const arraySize = 3;
+    int const arraySize = 10;
     Shape *shapes[arraySize] = {0};
     int sNum = rand() % 9000 + 1000;
-
-    // save for later: dynamic array of pointers
-    // cin >> arraySize;
-    // Shape** shapes = new Shape*[arraySize];
-    
-	
+    	
     while(menuReturn != 6){
         menuReturn =  mainMenu();
-        // cout << mainMenu() << "\n";
         switch(menuReturn){
             case 1: {
                 if(count < arraySize){
@@ -82,6 +33,7 @@ int main(){
                     cout << "\n \u25E3 rectangle has been created, please continue ~~~~~~~~~\n\n\n";
                     count ++;
                 } else {
+                    clearScreen();
                     cout << "need more space \n\n";
                 }
             }
@@ -96,15 +48,41 @@ int main(){
                     cout << "\n \u25E3 square has been created, please continue ~~~~~~~~~~~~\n\n\n"; 
                     count++;
                 } else{
+                    clearScreen();
                     cout << "need more space \n\n";
                 }
             }
                 break;
-            case 3:
-                cout << "triangle /n";
+            case 3: {
+                if(count < arraySize){
+                    clearScreen();
+                    cout << "\n \u25E4 creating triangle ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
+                    double b = requestTriangleBase();
+                    double w = requestTriangleWidth();
+                    string triName = "Tri-";
+                    shapes[count] = new Triangle(triName, sNum, b, w);
+                    cout << "\n \u25E3 triangle has been created, please continue ~~~~~~~~~~\n\n\n"; 
+                    count++;
+                } else{
+                    clearScreen();
+                    cout << "need more space \n\n";
+                }
+            }
                 break;
-            case 4:
-                cout << "circle /n";
+            case 4: {
+                if(count < arraySize){
+                    clearScreen();
+                    cout << "\n \u25E4 creating circle ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
+                    double r = requestCircleRadius();
+                    string cirName = "Cir-";
+                    shapes[count] = new Circle(cirName, sNum, r);
+                    cout << "\n \u25E3 circle has been created, please continue   ~~~~~~~~~~\n\n\n"; 
+                    count++;
+                } else{
+                    clearScreen();
+                    cout << "need more space \n\n";
+                }
+            }
                 break;
             case 5: {
                 clearScreen();
@@ -115,30 +93,31 @@ int main(){
                 for(int i = 0; i < arraySize; ++i){
                     if(shapes[i] == 0){
                         cout << "Shape: " << i << " undefined" << "\n";
-                    } else{
+                    } else {
                         cout << "Shape: " << i
                                 << "\nName: "
-                                << shapes[i] ->getUniqueName() 
+                                << shapes[i] -> getUniqueName() 
                                 << "\narea: " 
+                                << fixed
+                                << setprecision(2)
                                 << shapes[i] -> getArea() 
                                 << "\n"
                                 << endl;
-                        // save for later
-                        // cout << "Shape: " << i << " area: " << (*shapes)[i].getArea() << endl;
                     }
                 }
+                cout << "\n\n";
             }
                 break;
             case 6: {
                     clearScreen();
-                    // for(int i = 0; i < 250; i++) {
-                    //     cout << " \u25B1 " << flush;
-                    //     cout << " \u25C2 " << flush;
-                    //     cout << " \u25A7 " << flush;
-                    //     cout << " \u2606 " << flush;
-                    //     cout << " \u266c " << flush;
-                    //     cout << " \u263a " << flush;
-                    // }
+                    for(int i = 0; i < 250; i++) {
+                        cout << " \u25B1 " << flush;
+                        cout << " \u25C2 " << flush;
+                        cout << " \u25A7 " << flush;
+                        cout << " \u2606 " << flush;
+                        cout << " \u266c " << flush;
+                        cout << " \u263a " << flush;
+                    }
                     cout << "\n\n exit \n";
                     break;
             }

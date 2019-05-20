@@ -1,15 +1,19 @@
 #include <iostream>
 #include <string>
-// #include "Shape.h"
 
 class Circle : public Shape{
     private:
         double radius;
 
     public:
-        Circle(string n, double r);
+        // contructor/ deconstructor
+        Circle(string n, int num, double r);
         ~Circle();
-        void setRadius(double r);
-        double getRadius() const;
+        // get
+        double getRadius(void);
         virtual double getArea() const;
+        // set
+        void setRadius(double r);
 };
+// helper
+double requestCircleRadius(void);

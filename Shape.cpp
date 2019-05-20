@@ -4,26 +4,25 @@
 
 using namespace std;
 
-
-Shape::Shape(string s){
+// constructor/ deconstructor
+Shape::Shape(string s, int n){
     name = s;
+    number = n;
 }
 
 Shape::~Shape(){}
 
-
-void Shape::setName(string s){
-    name = s;
-}
-
+// get
 string Shape::getName() const{
     return name;
 }
 
-double Shape::getLength() const{
-    return 0;
+string Shape::getUniqueName() const{
+
+    return name + to_string(number);
 }
 
-// double Shape::getArea() const = 0;
-
-// virtual double Shape::getArea() const = 0;
+// set
+void Shape::setName(string s){
+    name = s;
+}

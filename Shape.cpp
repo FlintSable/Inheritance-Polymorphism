@@ -1,3 +1,7 @@
+// Assignment 6 - Inheritance and Polymorphism
+// Nicholas Noochla-or
+// CS 52 Spring 2019
+
 #include <string>
 #include <iostream>
 #include "Shape.h"

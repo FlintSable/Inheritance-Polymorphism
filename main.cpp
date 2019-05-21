@@ -1,3 +1,7 @@
+// Assignment 6 - Inheritance and Polymorphism
+// Nicholas Noochla-or
+// CS 52 Spring 2019
+
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -29,7 +33,8 @@ int main(){
                     double l = requestRectLength();
                     double w = requestRectWidth();
                     string rectName = "Rect-";
-                    shapes[count] = new Rectangle(rectName, sNum, l, w);
+                    Rectangle *r = new Rectangle(rectName, sNum, l, w);
+                    shapes[count] = r;
                     cout << "\n \u25E3 rectangle has been created, please continue ~~~~~~~~~\n\n\n";
                     count ++;
                 } else {
@@ -44,7 +49,8 @@ int main(){
                     cout << "\n \u25E4 creating square ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
                     double s = requestSquareSide();
                     string squareName = "Sqr-";
-                    shapes[count] = new Square(squareName, sNum, s);
+                    Square *sq = new Square(squareName, sNum, s);
+                    shapes[count] = sq;
                     cout << "\n \u25E3 square has been created, please continue ~~~~~~~~~~~~\n\n\n"; 
                     count++;
                 } else{
@@ -60,7 +66,8 @@ int main(){
                     double b = requestTriangleBase();
                     double w = requestTriangleWidth();
                     string triName = "Tri-";
-                    shapes[count] = new Triangle(triName, sNum, b, w);
+                    Triangle *tr = new Triangle(triName, sNum, b, w);
+                    shapes[count] = tr;
                     cout << "\n \u25E3 triangle has been created, please continue ~~~~~~~~~~\n\n\n"; 
                     count++;
                 } else{
@@ -75,7 +82,8 @@ int main(){
                     cout << "\n \u25E4 creating circle ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
                     double r = requestCircleRadius();
                     string cirName = "Cir-";
-                    shapes[count] = new Circle(cirName, sNum, r);
+                    Circle *ci = new Circle(cirName, sNum, r);
+                    shapes[count] = ci;
                     cout << "\n \u25E3 circle has been created, please continue   ~~~~~~~~~~\n\n\n"; 
                     count++;
                 } else{
